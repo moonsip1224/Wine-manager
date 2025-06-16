@@ -26,11 +26,16 @@ ADD supervisord-onboard.conf /etc/supervisor/conf.d/supervisord-onboard.conf
 # Copy scripts
 ADD start.sh /root/start.sh
 ADD healthcheck.sh /root/healthcheck.sh
+ADD install-dependencies.sh /root/install-dependencies.sh
+ADD setup-environment.sh /root/setup-environment.sh
+ADD install-novnc.sh /root/install-novnc.sh
+ADD install-wine.sh /root/install-wine.sh
 ADD install-vinegar.sh /root/install-vinegar.sh
 ADD setup-desktop.sh /root/setup-desktop.sh
+ADD configure-services.sh /root/configure-services.sh
 
 # Make scripts executable
-RUN chmod +x /root/start.sh /root/healthcheck.sh /root/install-vinegar.sh /root/setup-desktop.sh
+RUN chmod +x /root/*.sh
 
 # Set Wine environment variables (Vinegar will create the prefix)
 ENV WINEPREFIX /root/prefix64

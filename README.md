@@ -30,7 +30,7 @@ Deploy to Railway.com cloud platform instantly:
 
 1. Fork this repository
 2. Connect to [Railway.app](https://railway.app)
-3. Deploy from the `railway/` folder
+3. Deploy from the root directory (uses `Dockerfile` which references `railway/` scripts)
 4. Access via your Railway URL
 5. Password: `$$Hello1$$`
 
@@ -46,7 +46,7 @@ git clone https://github.com/moonsip1224/Wine-manager.git
 cd Wine-manager/local
 
 # Single command installation and startup (handles EVERYTHING)
-./start
+./start.sh
 ```
 
 This script automatically:
@@ -63,26 +63,36 @@ This script automatically:
 
 ```
 Wine-manager/
+├── Dockerfile              # 🚀 Railway deployment (references railway/ scripts)
 ├── railway/                 # ☁️  Cloud deployment (Railway.com)
-│   ├── Dockerfile          # Container definition
+│   ├── Dockerfile          # Container definition (legacy)
 │   ├── start.sh            # Complete setup & start script
-│   ├── install-vinegar.sh  # Vinegar installation
-│   ├── setup-desktop.sh    # Desktop environment setup
-│   ├── supervisord*.conf   # Service management
-│   ├── healthcheck.sh      # Health monitoring
-│   ├── railway.json        # Railway configuration
-│   └── README.md           # Railway deployment guide
+│   ├── install-dependencies.sh      # System dependency installer
+│   ├── setup-environment.sh         # Environment setup
+│   ├── install-novnc.sh            # noVNC installation
+│   ├── install-wine.sh             # Wine installation
+│   ├── install-vinegar.sh          # Vinegar installation
+│   ├── setup-desktop.sh            # Desktop environment setup
+│   ├── configure-services.sh       # Service configuration
+│   ├── supervisord*.conf           # Service management
+│   ├── healthcheck.sh              # Health monitoring
+│   ├── railway.json                # Railway configuration
+│   └── README.md                   # Railway deployment guide
 │
 ├── local/                   # 🖥️  Local deployment (Linux)
-│   ├── start                        # Complete setup & start script
+│   ├── start.sh                     # Complete setup & start script
 │   ├── install-dependencies.sh      # System dependency installer
-│   ├── setup-local.sh              # Environment configurator
-│   ├── install-vinegar-local.sh     # Vinegar for local setup
-│   ├── setup-desktop-local.sh       # Desktop setup for local
-│   ├── supervisord-local.conf       # Local service management
-│   ├── requirements.txt             # Python dependencies
-│   ├── healthcheck-local.sh         # Local health monitoring
-│   └── README.md                    # Local deployment guide
+│   ├── setup-environment.sh         # Environment setup
+│   ├── install-novnc.sh            # noVNC installation
+│   ├── configure-wine.sh           # Wine configuration
+│   ├── create-shortcuts.sh         # Desktop shortcuts
+│   ├── configure-services.sh       # Service configuration
+│   ├── system-optimization.sh      # System optimizations
+│   ├── create-management-scripts.sh # Management scripts
+│   ├── supervisord-local.conf      # Local service management
+│   ├── requirements.txt            # Python dependencies
+│   ├── healthcheck-local.sh        # Local health monitoring
+│   └── README.md                   # Local deployment guide
 │
 ├── .github/workflows/       # 🔄 GitHub Actions
 ├── Makefile                # 🐳 Docker build commands

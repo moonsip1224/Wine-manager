@@ -25,7 +25,7 @@ git clone https://github.com/moonsip1224/Wine-manager.git
 cd Wine-manager/local
 
 # Run the complete setup and start script (handles EVERYTHING)
-./start
+./start.sh
 ```
 
 That's it! This single script will:
@@ -107,7 +107,7 @@ Once installed, manage your Wine Manager with these commands:
 
 ### Custom Port
 ```bash
-PORT=8081 ./start
+PORT=8081 ./start.sh
 ```
 
 ### Network Access
@@ -185,7 +185,7 @@ sudo pacman -S curl wget
 sudo netstat -tlnp | grep :4000
 
 # Use different port
-PORT=8081 ./start
+PORT=8081 ./start.sh
 ```
 
 **Wine/Roblox Issues**
@@ -245,7 +245,7 @@ sleep 5
 ```bash
 # Use lower resolution
 export DISPLAY_RESOLUTION="800x600x24"
-./start
+./start.sh
 ```
 
 ### Optimize for Gaming

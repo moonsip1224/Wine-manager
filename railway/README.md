@@ -47,18 +47,25 @@ This folder contains everything needed to deploy the Wine Manager to Railway.com
 
 ```
 railway/
-├── Dockerfile              # Container definition (Wine-free base)
-├── start                   # Main startup script with dependency handling
+├── Dockerfile              # Container definition (legacy - for reference)
+├── start.sh                # Main startup script (orchestrator)
+├── install-dependencies.sh # System dependency installer
+├── setup-environment.sh    # Environment setup
+├── install-novnc.sh        # noVNC installation
+├── install-wine.sh         # Wine installation
+├── install-vinegar.sh      # Vinegar/Wine installation script
+├── setup-desktop.sh        # Desktop environment setup
+├── configure-services.sh   # Service configuration and startup
 ├── supervisord.conf         # Service management configuration
 ├── supervisord-wine.conf    # Desktop setup service
 ├── supervisord-onboard.conf # Virtual keyboard service
-├── install-vinegar.sh       # Vinegar/Wine installation script
-├── setup-desktop.sh         # Desktop environment setup
 ├── healthcheck.sh          # Health monitoring
 ├── railway.json            # Railway deployment config
 ├── .dockerignore           # Docker build optimization
 └── README.md               # This file
 ```
+
+**Note:** Railway deployment now uses the main `Dockerfile` in the project root, which copies all scripts from this folder.
 
 ## 🛠️ Customization
 
